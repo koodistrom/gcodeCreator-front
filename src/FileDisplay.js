@@ -16,11 +16,12 @@ function FileDisplay(props){
         console.log("tällä ollaan teksti")
         reader.onload = function (e) {
             setState(reader.result);
+            console.log("huhuu"+state);
         }
         reader.readAsText(props.file);
         
         
-        return <p>{state}</p>
+        return <pre><code>{state}</code></pre>
     }
 }
 

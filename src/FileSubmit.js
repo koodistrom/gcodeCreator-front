@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {useState} from "react";
 
 import FileDisplay from './FileDisplay';
 import Requests from './Requests';
@@ -9,23 +9,24 @@ function FileSubmit() {
 
 
   const [state, setState] = useState(null);
-  const [asText, setAsText] = useState(false);
-
-  useEffect(()=>{
-    const formData = new FormData();
-    console.log(state)
-    formData.append('file', state);
-    Requests.uploadSVG(formData)
-        .then(res => {
-                console.log(res.data);
-                alert("File uploaded successfully.")
-        })
-  })
+  
 
   function onFileChangeHandler(e) {
     e.preventDefault();
+    const formData = new FormData();
+    console.log(e.target.files[0])
     console.log(state)
-    setState(e.target.files[0]);
+    formData.append('file', e.target.files[0]);
+    Requests.uploadSVG(formData)
+        .then(res => {
+                console.log("received data:")
+                console.log(res);
+                let fileName = res.headers["content-disposition"].split("filename=")[1];
+                //let fileName = "gaymacgayface.svg";
+                let file = new File([res.data], fileName, {type: "image/svg+xml"});
+                setState(file);
+                alert("File uploaded successfully.")
+        })
 
 };
 
@@ -40,10 +41,9 @@ function FileSubmit() {
         />
         <label> Upload your file   </label>
         <br />
-        <button type="button" onClick={()=>setAsText(!asText)}>img/text</button>
       </form>
       
-      <FileDisplay file={state} asText= {asText} />
+      <FileDisplay file={state} />
     </div>
   );
 }

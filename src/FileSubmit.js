@@ -9,23 +9,24 @@ import Requests from './Requests';
 function FileSubmit() {
 
 
-  const [state, setState] = useState(null);
-  
+  const [svgFile, setSVG] = useState(null);
+  const [gCodeFile, setGcode] = useState(null);
 
   function onFileChangeHandler(e) {
     e.preventDefault();
     const formData = new FormData();
     console.log(e.target.files[0])
-    console.log(state)
+    setSVG(e.target.files[0]);
+    console.log(svgFile)
     formData.append('file', e.target.files[0]);
     Requests.uploadSVG(formData)
         .then(res => {
                 console.log("received data:")
                 console.log(res);
                 let fileName = res.headers["content-disposition"].split("filename=")[1];
-                //let fileName = "gaymacgayface.svg";
-                let file = new File([res.data], fileName, {type: "image/svg+xml"});
-                setState(file);
+                
+                let file = new File([res.data], fileName, {type: "text/plain"});
+                setGcode(file);
                 alert("File uploaded successfully.")
         })
 
@@ -43,6 +44,7 @@ function FileSubmit() {
         <label> Upload your file   </label>
         <br />
       </form>
+      <a href={gCodeFile==null ? '' : URL.createObjectURL(gCodeFile)} download>Click to download</a>
       <Tabs>
     <TabList>
       <Tab>SVG</Tab>
@@ -51,10 +53,11 @@ function FileSubmit() {
 
     <TabPanel>
       <h2>Any content 1</h2>
-      <FileDisplay file={state} />
+      <FileDisplay file={svgFile} />
     </TabPanel>
     <TabPanel>
       <h2>Any content 2</h2>
+      <FileDisplay file={gCodeFile} />
     </TabPanel>
   </Tabs>
       

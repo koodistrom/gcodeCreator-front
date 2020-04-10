@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import logo from "./logo.svg";
+import './FileDisplay.css';
 
 function FileDisplay(props) {
   const [state, setState] = useState("");
@@ -9,14 +10,14 @@ function FileDisplay(props) {
   
   console.log(props);
   if (props.file == null) {
-    console.log("tällä ollaan null");
+    console.log("no file selected");
     displayed = <img src={logo} alt="SVG HERE" />;
   } else if (!asText) {
-    console.log("tällä ollaan kuva");
+    console.log("showing image");
     displayed = <img src={URL.createObjectURL(props.file)} alt="SVG HERE" />;
 
   } else {
-    console.log("tällä ollaan teksti");
+    console.log("showing text");
     reader.onload = function(e) {
       setState(reader.result);
     };

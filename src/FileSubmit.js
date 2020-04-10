@@ -1,5 +1,6 @@
 import React, {useState} from "react";
-
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 import FileDisplay from './FileDisplay';
 import Requests from './Requests';
 
@@ -42,8 +43,21 @@ function FileSubmit() {
         <label> Upload your file   </label>
         <br />
       </form>
-      
+      <Tabs>
+    <TabList>
+      <Tab>SVG</Tab>
+      <Tab>GCODE</Tab>
+    </TabList>
+
+    <TabPanel>
+      <h2>Any content 1</h2>
       <FileDisplay file={state} />
+    </TabPanel>
+    <TabPanel>
+      <h2>Any content 2</h2>
+    </TabPanel>
+  </Tabs>
+      
     </div>
   );
 }

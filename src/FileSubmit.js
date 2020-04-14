@@ -15,17 +15,20 @@ function FileSubmit(props) {
     props.setSVG(e.target.files[0]);
     
     formData.append('file', e.target.files[0]);
+
+    const json = JSON.stringify(props.options);
+    const blob = new Blob([json], {
+    type: 'application/json'
+    });
+    formData.append('options', blob);
     Requests.uploadSVG(formData)
         .then(res => {
 
-                let fileName = res.headers["content-disposition"].split("filename=")[1];
-                
-                let file = new File([res.data], fileName, {type: "text/plain"});
-                setGcodeLink(URL.createObjectURL(file));
-
-
-                props.setGcode(file)
-                alert("File uploaded successfully.")
+          let fileName = res.headers["content-disposition"].split("filename=")[1];
+          let file = new File([res.data], fileName, {type: "text/plain"});
+          setGcodeLink(URL.createObjectURL(file));
+          props.setGcode(file)
+          alert("File uploaded successfully.")
         })
 
 };

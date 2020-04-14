@@ -13,6 +13,13 @@ import FileDisplay from './FileDisplay';
 function App(){
   const [svgFile, setSVG] = useState(null);
   const [gCodeFile, setGcode] = useState(null);
+  const [options, setOptions] = useState({
+    units: "mm",
+    moveDepth: 1,
+    workDepth: 0,
+    feed: 100,
+
+});
 
 
     return (
@@ -20,10 +27,10 @@ function App(){
 <div className="Wrapper">
   <Grid container spacing={3}>
     <Grid item xs={12}>
-    <FileSubmit setSVG={setSVG} setGcode = {setGcode}></FileSubmit>
+    <FileSubmit setSVG={setSVG} setGcode = {setGcode} options = {options}></FileSubmit>
     </Grid>
     <Grid item xs={3}>
-      <Options></Options>
+      <Options options={options} setOptions={setOptions}></Options>
     </Grid>
     <Grid item xs={9}>
       <div>

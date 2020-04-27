@@ -1,5 +1,11 @@
 .Wrapper {
-  margin: 10pt;
+  padding: 15pt;
+  background: #bca2a0;
+  display: inline-grid;
+  grid-template-columns: 23% 23% 23% 23%;
+  grid-gap: 20px 20px;
+  width: 100vw; 
+  min-height: 100vh;
 }
 .App {
   text-align: center;
@@ -10,19 +16,50 @@
 
 }
 
+
 #TabList {
   text-align: right;
-  
-}
-.Options {
-  border-style: solid;
-  border-color: black;
-  border-radius: 5pt;
-  border-width: 1px;
-  padding: 3pt;
-}
-#Display {
-
 
  
 }
+
+.Displayed{
+  overflow-y:auto;
+  scrollbar-width: thin;
+  scrollbar-color:  #001f3f transparent;
+}
+.Options {
+
+  padding: 10pt;
+}
+
+.ContentTabs{
+  grid-column-start: 2;
+  grid-column-end: 5;
+  grid-row: 1 / span 10;
+}
+
+#pop{
+  border-radius: 15px;
+background: #bca2a0;
+box-shadow:  10px 10px 20px #a58f8d, 
+             -10px -10px 20px #d3b5b3;
+}
+
+#drop{
+  border-radius: 15px;
+  background: #bca2a0;
+  box-shadow: inset 10px 10px 20px #a58f8d, 
+              inset -10px -10px 20px #d3b5b3;
+}
+
+#right {
+
+}
+
+.options-grid-container {
+  display: inline-grid;
+  grid-template-columns: auto auto;
+  grid-gap: 20px 20px;
+}
+

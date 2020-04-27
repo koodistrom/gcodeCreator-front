@@ -1,11 +1,12 @@
-import React, {useEffect}  from "react";
+import React, {useState, useEffect}  from "react";
+
 function Options(props) {
 
     const options = props.options;
-
     
+    const [changesMade, setChangesMade] = useState(false);
     const handleChange = e => {
-       
+       setChangesMade(true);
         const {name , value} = e.target
         props.setOptions( prevState => ({
             ...prevState,
@@ -15,29 +16,43 @@ function Options(props) {
     }
     useEffect(() => { console.log(options)});
   return (
-    <div className="Options">
+    <div className="Options" id="pop">
       <h2>Options</h2>
-      <form onChange={handleChange}>
-        <h4 >Units</h4>
+      <form onChange={handleChange} className="options-grid-container">
+        <label >Units</label>
+        <div id="right">       
         <input type="radio" id="mm" name="units" value="mm" checked={options.units==="mm"}/>
         <label for="mm">mm</label>
         <input type="radio" id="inch" name="units" value="inch"  checked={options.units==="inch"}/>
-        <label for="inch">inch</label><br/>
+        <label for="inch">inch</label>
+        </div>
 
-        <h4 >Z</h4>
-        <label>cut/draw depth (z): </label>
-        <input type="number" name="workDepth" value={options.workDepth}/>
-        <label>mm</label>
-        <br />
-        <label>rapid move depth (z): </label>
-        <input type="number" name="moveDepth" value={options.moveDepth}/>
-        <label>mm</label>
-        <br />
-        <h4 >Speed</h4>
-        <input type="number" name="feed" value={options.speed}/>
-        <label>mm/min</label>
+        <label>Cut/draw depth (z): </label>
+        <div id="right"> 
+        <input type="number" name="workDepth" size="10" value={options.workDepth}/>
+        <label>{options.units}</label>
+        </div>
+
+        <label>Rapid move depth (z): </label>
+        <div id="right"> 
+        <input type="number" name="moveDepth" size="10" value={options.moveDepth}/>
+        <label>{options.units}</label>
+        </div>
+ 
+        <label>Speed</label>
+        <div id="right"> 
+        <input type="number" name="feed" size="10" value={options.speed}/>
+        <label>{options.units}/min</label>
+        </div>
         <br />
       </form>
+      <div>{changesMade?
+              <button onClick={()=>{
+                setChangesMade(false);
+                props.update()}}>refresh</button>
+                : null
+      }
+      </div>
     </div>
   );
 }

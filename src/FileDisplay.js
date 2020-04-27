@@ -26,9 +26,9 @@ function FileDisplay(props) {
 
   }
     return (
-      <div>
+      <div className="Displayed">
         <button type="button" onClick={() => setAsText(!asText)}>
-          img/text
+          {asText? "SHOW VECTORS":"SHOW XML CODE"}
         </button>
         {displayed}
       </div>

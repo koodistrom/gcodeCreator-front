@@ -63,9 +63,7 @@ box-shadow:  10px 10px 20px #a58f8d,
   box-shadow: inset 10px 10px 20px #a58f8d, 
               inset -10px -10px 20px #d3b5b3;
   min-height: 80vh;
-  overflow-y:auto;
-  scrollbar-width: thin;
-  scrollbar-color:  #001f3f transparent;
+
 
 
 }

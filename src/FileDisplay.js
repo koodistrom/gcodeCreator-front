@@ -7,11 +7,15 @@ function FileDisplay(props) {
   const [asText, setAsText] = useState(false);
   let reader = new FileReader();
   let displayed;
+
+  if(props.textOnly){
+    setAsText(false);
+  }
   
   console.log(props);
   if (props.file == null) {
     console.log("no file selected");
-    displayed = <img src={logo} alt="SVG HERE" />;
+    displayed = <img src={logo} alt="UPLOAD FILE" />;
   } else if (!asText) {
     console.log("showing image");
     displayed = <img src={URL.createObjectURL(props.file)} alt="SVG HERE" />;
@@ -27,9 +31,9 @@ function FileDisplay(props) {
   }
     return (
       <div className="Displayed">
-        <button type="button" onClick={() => setAsText(!asText)}>
+        {props.textOnly? null : <button type="button" onClick={() => setAsText(!asText)}>
           {asText? "SHOW VECTORS":"SHOW XML CODE"}
-        </button>
+        </button>}
         {displayed}
       </div>
     );

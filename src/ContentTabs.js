@@ -12,10 +12,10 @@ function ContentTabs(props) {
           </TabList>
 
           <TabPanel>
-            <FileDisplay file={props.svgFile} />
+            <FileDisplay file={props.svgFile}  textOnly={false} />
           </TabPanel>
           <TabPanel>
-            <FileDisplay file={props.gCodeFile} />
+            <FileDisplay file={props.gCodeFile} textOnly={true} />
           </TabPanel>
         </Tabs>
       </div>

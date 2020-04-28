@@ -5,7 +5,8 @@ class Requests {
  
   
   constructor(){
-    this.backEndURL = "http://localhost:8080/";
+    //this.backEndURL = "http://localhost:8080/";
+    this.backEndURL = "https://gcodeback.herokuapp.com/";
   }
   postPrettyPrint(svg) {
 

@@ -36,7 +36,7 @@ class Requests {
   }
 
   uploadSVG(data) {
-      return axios.post("http://localhost:8080/uploadSVG", data);
+      return axios.post(this.backEndURL+"uploadSVG", data);
   }
 
 }

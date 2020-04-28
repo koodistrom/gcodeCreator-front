@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import logo from "./logo.svg";
 import './FileDisplay.css';
+import TextImgBtn from "./TextImgBtn";
 
 function FileDisplay(props) {
   const [state, setState] = useState("");
-  const [asText, setAsText] = useState(false);
+  const [asText, setAsText] = useState(props.textOnly);
   let reader = new FileReader();
   let displayed;
 
-  if(props.textOnly){
-    setAsText(false);
-  }
   
   console.log(props);
   if (props.file == null) {
@@ -31,9 +29,7 @@ function FileDisplay(props) {
   }
     return (
       <div className="Displayed">
-        {props.textOnly? null : <button type="button" onClick={() => setAsText(!asText)}>
-          {asText? "SHOW VECTORS":"SHOW XML CODE"}
-        </button>}
+        {props.textOnly? null : <TextImgBtn setAsText={setAsText} asText={asText}></TextImgBtn>}
         {displayed}
       </div>
     );

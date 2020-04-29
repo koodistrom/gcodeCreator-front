@@ -1,13 +1,16 @@
 import axios from 'axios';
-
+/**
+ *A class holding requests to the back end
+ *
+ * @class Requests
+ */
 class Requests {
-
- 
   
   constructor(){
     //this.backEndURL = "http://localhost:8080/";
     this.backEndURL = "https://gcodeback.herokuapp.com/";
   }
+
   postPrettyPrint(svg) {
 
     const result = axios(this.backEndURL+"svgPrettyPrint", {
@@ -19,19 +22,6 @@ class Requests {
 
         return svgPrettyText.data;
       });
-    return result;
-  }
-
-  getSomething() {
-    const result = axios({
-      method: 'get',
-      url: 'https://jm-button-game-server.herokuapp.com/hs',
-      withCredentials: true,
-      })
-      .then(Json => {
-        return Json.data;
-      });
-
     return result;
   }
 

@@ -1,5 +1,10 @@
 import React, {useState, useEffect}  from "react";
-
+/**
+ * Component holds the form where user can input options that affect  gcode generation and a refresh button shown if changes are made.
+ *
+ * @param {*} props contains current options passed from App Component and a call back function to set the new options.
+ * @returns React Component
+ */
 function Options(props) {
 
     const options = props.options;

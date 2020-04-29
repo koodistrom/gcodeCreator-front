@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
+import instructions from "./instructions.svg";
 import './FileDisplay.css';
 import TextImgBtn from "./TextImgBtn";
 
@@ -13,7 +13,7 @@ function FileDisplay(props) {
   console.log(props);
   if (props.file == null) {
     console.log("no file selected");
-    displayed = <img src={logo} alt="UPLOAD FILE" />;
+    displayed = <img src={instructions} alt="UPLOAD FILE" />;
   } else if (!asText) {
     console.log("showing image");
     displayed = <img src={URL.createObjectURL(props.file)} alt="SVG HERE" />;

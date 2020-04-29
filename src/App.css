@@ -1,11 +1,21 @@
+@media only screen and (min-width: 600px) {
+  .Wrapper {
+
+    display: inline-grid;
+    grid-template-columns: 23% 23% 23% 23%;
+    grid-gap: 20px 20px;
+
+  }
+  
+  .ContentTabs{
+    margin-top: 0;
+  }
+}
 .Wrapper {
-  padding: 15pt;
-  background: #bca2a0;
-  display: inline-grid;
-  grid-template-columns: 23% 23% 23% 23%;
-  grid-gap: 20px 20px;
-  width: 100vw; 
-  min-height: 100vh;
+  
+  margin: 15pt;
+  width: 97vw; 
+  min-height: 95vh;
 }
 .App {
   text-align: center;
@@ -37,6 +47,7 @@
   grid-column-start: 2;
   grid-column-end: 5;
   grid-row: 1 / span 10;
+  margin-top: 20pt;
 }
 
 #pop{

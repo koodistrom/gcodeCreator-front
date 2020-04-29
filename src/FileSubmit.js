@@ -18,7 +18,7 @@ function FileSubmit(props) {
         <input id="file" type="file" onChange={onFileChangeHandler} multiple />
 
         <a href={props.gCodeLink} download>
-          Download gcode
+        {props.gCodeLink === ""? null:"Download gcode"}
         </a>
         <br />
       </form>

@@ -38,7 +38,7 @@ function App() {
       let GcodeFile = new File([res.data], fileName, { type: "text/plain" });
       setGcodeLink(URL.createObjectURL(GcodeFile));
       setGcode(GcodeFile);
-      alert("File uploaded successfully.");
+      alert("File converted successfully.");
     });
   }
 
